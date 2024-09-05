@@ -1,0 +1,25 @@
+.border-row tr {
+  border-bottom: 1px solid #d1d5db;
+  /* Color gris claro */
+}
+
+/* Quitar el borde del último elemento en el tbody para evitar el doble borde */
+.border-row tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* styles.css */
+.tooltip {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.group-hover\:block {
+  display: block;
+}
+
+button:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}

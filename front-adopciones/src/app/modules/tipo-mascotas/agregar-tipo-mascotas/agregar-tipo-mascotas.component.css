@@ -1,0 +1,138 @@
+/* agregar-tipo-mascotas.component.css */
+
+/* Contenedor principal */
+.container {
+  display: flex;
+  align-items: stretch;
+  /* Asegura que los elementos secundarios ocupen toda la altura */
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+}
+
+/* Estilo del wrapper del formulario */
+.form-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem;
+  background: #ffffff;
+  /* border-radius: 0.75rem; */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  /* Necesario para posicionar la ilustración */
+  flex: 1;
+  /* Asegura que el formulario ocupe el espacio disponible */
+}
+
+/* Estilo del título */
+h2 {
+  color: #2d3748;
+}
+
+/* Estilo del formulario */
+.form-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Estilo de los campos de formulario */
+.form-group {
+  width: 100%;
+}
+
+.label-text {
+  display: block;
+  color: #4a5568;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e2e8f0;
+  /* background-color: #f7fafc; */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus {
+  border-color: #3182ce;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.5);
+}
+
+/* Mensajes de error */
+.error-message {
+  color: #e53e3e;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Estilo de los botones */
+.form-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.btn-cancel {
+  background-color: #e53e3e;
+  /* Color de fondo rojo para cancelar */
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-cancel:hover {
+  background-color: #c53030;
+}
+
+.btn-submit {
+  background-color: #3182ce;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit:hover {
+  background-color: #2b6cb0;
+}
+
+.btn-submit:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+/* Estilo del banner */
+.banner {
+  width: 30%;
+  background-color: #edf2f7;
+  /* Color de fondo sutil */
+}
+
+.banner-image {
+  width: 100%;
+  height: 100vh;
+  /* Ocupa toda la altura de la pantalla */
+  object-fit: cover;
+  /* Asegura que la imagen cubra el área sin distorsión */
+}

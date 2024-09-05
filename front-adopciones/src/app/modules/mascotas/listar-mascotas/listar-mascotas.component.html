@@ -1,0 +1,105 @@
+<!-- ======================================= -->
+<div class="flex mx-6 gap-40 m-4">
+
+  <button routerLink="/agregar-mascotas"
+    class=" bg-green-600 text-white py-2 px-3 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">Agregar
+    nueva mascota</button>
+  <p class="text-4xl font-extrabold text-center my-1 text-gray-900">Lista de Mascotas</p>
+
+</div>
+
+<!-- INICIO DEL GRID -->
+<div class="grid grid-cols-12 gap-6 p-6">
+
+
+
+  <!-- INICIO TABLA EN 9 COLUMNAS DEL GRID -->
+  <div class="col-span-12 md:col-span-9 bg-white shadow-xl rounded-lg overflow-hidden">
+    <div class="p-4">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+            <th class="p-3">ID</th>
+            <th class="p-3">Nombre</th>
+            <th class="p-3">Edad</th>
+            <th class="p-3">Adoptado</th>
+            <th class="p-3">Tipo</th>
+            <th class="p-3">Editar</th>
+            <th class="p-3">Eliminar</th>
+          </tr>
+        </thead>
+
+        <tbody class="cursor-pointer">
+          <tr *ngFor="let mascota of mascotas" [ngClass]="{'bg-purple-50': mascota === selectedMascota}"
+            (click)="selectMascota(mascota)"
+            class="transition-transform duration-300 transform hover:scale-105 hover:bg-purple-100">
+            <td class="p-3 border-b border-gray-200">{{mascota.id}}</td>
+            <td class="p-3 border-b border-gray-200">{{mascota.nombre}}</td>
+            <td class="p-3 border-b border-gray-200">{{mascota.edad}}</td>
+            <td class="p-3 border-b border-gray-200">
+              <span [class.text-green-500]="mascota.isAdoptado" [class.text-red-500]="!mascota.isAdoptado">
+                {{mascota.isAdoptado ? 'SI' : 'NO'}}
+              </span>
+            </td>
+            <td class="p-3 border-b border-gray-200">{{mascota.tipoMascota.tipo}}</td>
+            <td class="p-3 border-b border-gray-200" [routerLink]="['/editar-mascota', mascota.id]"><i
+                class="fas fa-edit"></i> </td>
+            <td class="p-3 border-b border-gray-200" (click)="eliminarMascotaById(mascota.id)"><i
+                class="fas fa-trash-alt"></i> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- FIN TABLA EN 9 COLUMNAS DEL GRID -->
+
+  <!-- INICIO 3 COLUMNAS DEL GRID -->
+
+
+
+
+
+
+  <div class="col-span-12 md:col-span-3 p-4 rounded-lg shadow-lg ">
+
+
+    <!-- INICIO TARJETA DE FILTROS -->
+    <div class="col-span-12 md:col-span-3 bg-white shadow-lg rounded-lg p-4 h-60">
+      <h3 class="text-xl font-bold mb-3 text-gray-800">Filtros</h3>
+      <!-- Aquí puedes agregar opciones para filtrar los datos de las mascotas -->
+      <div class="space-y-2">
+        <button
+          class="w-full bg-indigo-600 text-white py-2 px-3 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Filtrar
+          por Adoptado</button>
+        <button
+          class="w-full bg-gray-300 text-gray-800 py-2 px-3 rounded-lg hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500">Ver
+          Todos</button>
+      </div>
+    </div>
+    <!-- FIN TARJETA DE FILTROS -->
+
+
+
+
+    <div class="relative w-full h-48 mb-4 pt-6" *ngIf="selectedMascota">
+      <img [src]="selectedMascota.imageUrl" alt="Imagen seleccionada"
+        class="w-full h-full object-cover rounded-lg shadow-md">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30 rounded-lg">
+      </div>
+
+      <div class="text-center">
+        <p class="text-xl font-bold text-gray-800 mb-2">{{selectedMascota.nombre}}</p>
+        <p class="text-lg text-gray-600 mb-2"><strong>Edad:</strong> {{selectedMascota.edad}}</p>
+        <p class="text-lg text-gray-600 mb-2"><strong>Tipo:</strong> {{selectedMascota.tipoMascota.tipo}}</p>
+        <p class="text-lg font-semibold text-gray-700 mb-2">
+          <span [class.text-green-500]="selectedMascota.isAdoptado" [class.text-red-500]="!selectedMascota.isAdoptado">
+            {{selectedMascota.isAdoptado ? 'Adoptado' : 'No Adoptado'}}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- FIN 3 COLUMNAS DEL GRID -->
+
+</div>
+<!-- FIN DEL GRID -->

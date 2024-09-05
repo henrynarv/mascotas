@@ -1,0 +1,49 @@
+<div class="mx-32 mt-4">
+  <button routerLink="/agregar-tipo-mascotas" class="py-3 px-3 bg-green-500 text-white rounded-md">agregar tipo de
+    mascota</button>
+</div>
+<div class="p-4 flex justify-center">
+  <table class=" divide-y divide-gray-200 w-3/4">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="px-6 py-3 text-left text-sm  text-gray-500 uppercase tracking-wider">ID</th>
+        <th class="px-6 py-3 text-left text-sm  text-gray-500 uppercase tracking-wider">Tipo</th>
+        <th class="px-6 py-3 text-left text-sm text-gray-500 uppercase tracking-wider">Descripción</th>
+        <th class="px-6 py-3 text-left text-sm text-gray-500 uppercase tracking-wider">Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <tr class="relative group hover:shadow-md" *ngFor="let tipo of tipoMascotas">
+        <td class="px-6 py-3 whitespace-nowrap">{{tipo.id}}</td>
+        <td class="px-6 py-3 whitespace-nowrap">{{tipo.tipo}}</td>
+        <td class="px-6 py-3 whitespace-nowrap">{{tipo.descripcion}}</td>
+        <td class="px-6 py-3 whitespace-nowrap">
+          <div class="relative">
+            <!-- Los íconos estarán ocultos por defecto y solo se mostrarán al pasar el ratón por la celda -->
+            <div class="absolute inset-0 flex items-center opacity-0 group-hover:opacity-100 transition-opacity gap-4">
+              <button [routerLink]="['/editar-tipo-mascotas',tipo.id]"
+                class="relative text-gray-500 hover:text-gray-900 focus:outline-none mx-1 group">
+                <i class="fas fa-edit"></i>
+                <div
+                  class="tooltip absolute hidden bg-gray-700 text-white text-xs rounded py-1 px-2 -top-8 left-1/2 transform -translate-x-1/2 mt-2 group-hover:block">
+                  Editar
+                </div>
+              </button>
+
+              <button (click)="eliminarTipoDeMascota(tipo.id)"
+                class="relative text-gray-500 hover:text-red-500 focus:outline-none mx-1 group">
+                <i class="fas fa-trash"></i>
+                <div
+                  class="tooltip absolute hidden bg-gray-700 text-white text-xs rounded py-1 px-2 -top-8 left-1/2 transform -translate-x-1/2 mt-2 group-hover:block">
+                  Eliminar
+                </div>
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+
+
+  </table>
+</div>

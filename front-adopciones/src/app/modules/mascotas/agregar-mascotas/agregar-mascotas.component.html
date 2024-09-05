@@ -1,0 +1,173 @@
+<!-- src/app/components/mascota-form/mascota-form.component.html -->
+<!-- <form [formGroup]="mascotaForm" (ngSubmit)="onSubmit()" class="space-y-4 p-4 bg-gray-100 rounded-lg shadow-lg"
+  autocomplete="off">
+  <div>
+    <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+    <input id="nombre" formControlName="nombre" type="text"
+      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+    <div *ngIf="mascotaForm.get('nombre')?.invalid && mascotaForm.get('nombre')?.touched"
+      class="text-red-500 text-sm mt-1">
+      El nombre es obligatorio y debe tener al menos 2 caracteres.
+    </div>
+  </div>
+
+  <div>
+    <label for="edad" class="block text-sm font-medium text-gray-700">Edad</label>
+    <input id="edad" formControlName="edad" type="number"
+      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+    <div *ngIf="mascotaForm.get('edad')?.invalid && mascotaForm.get('edad')?.touched" class="text-red-500 text-sm mt-1">
+      La edad es obligatoria y debe ser un número positivo.
+    </div>
+  </div>
+
+  <div>
+    <label for="tipoMascotaId" class="block text-sm font-medium text-gray-700">Tipo de Mascota</label>
+    <select id="tipoMascotaId" formControlName="tipoMascotaId"
+      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <option value="" disabled>Selecciona un tipo</option>
+      <option *ngFor="let tipo of tiposMascota" [value]="tipo.id">{{ tipo.tipo }}</option>
+    </select>
+    <div *ngIf="mascotaForm.get('tipoMascotaId')?.invalid && mascotaForm.get('tipoMascotaId')?.touched"
+      class="text-red-500 text-sm mt-1">
+      Selecciona un tipo de mascota.
+    </div>
+  </div>
+
+
+  <button type="submit" [disabled]="mascotaForm.invalid"
+    class="inline-flex items-center px-4 py-2 bg-blue-500 text-white font-medium rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    Guardar
+  </button> -->
+
+<!-- Mensaje de error general -->
+<!-- <div *ngIf="errorMessage" class="text-red-500 text-sm mt-4">
+    {{ errorMessage }}
+  </div>
+</form> -->
+
+<!-- ================================== -->
+
+
+<!-- ============================== -->
+
+
+
+<!-- src/app/add-pet/add-pet.component.html -->
+<div class="relative overflow-hidden bg-gray-50 min-h-screen p-6 flex items-center justify-center">
+
+
+
+  <div class="relative max-w-4xl w-full bg-white shadow-md rounded-md p-6">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-700">
+      {{isEditMode ? 'Actualizar Mascota' : 'Agregar Nueva Mascota'}}</h2>
+
+    <!-- Formulario -->
+    <form [formGroup]="mascotaForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <!-- Sección de Imagen -->
+      <div class="mb-6" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+        <label for="imagen" class="block text-gray-600 font-medium mb-2">Imagen de la Mascota</label>
+        <div class="flex justify-center items-center border-2 border-dashed border-gray-300 rounded-lg p-6">
+          <!-- <input type="file" id="petImage" accept="image/*" class="hidden" (change)="onImageChange($event)" /> -->
+          <input type="file" id="imagen" (change)="onFileChange($event)" accept="image/*" class="hidden" />
+          <label for="imagen" class="cursor-pointer flex flex-col items-center justify-center text-gray-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mb-2" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18m-7 7h7M3 17h4" />
+            </svg>
+            <span class="text-lg">Subir Imagen</span>
+            <p class="text-sm text-gray-400">Arrastra y suelta o selecciona una imagen</p>
+            <p class="text-sm text-green-900">{{nombreFile ? nombreFile : 'no hay ninguna imagen seleccionada' }}</p>
+            <!-- <p  *ngIf="nombreFile" class="text-sm text-gray-700">{{nombreFile}}</p> -->
+            <!-- <p *ngIf="!nombreFile" class="text-sm text-gray-400">no hay ninguna imagen seleccionada</p> -->
+          </label>
+        </div>
+        <!-- Vista previa de la imagen -->
+        <!-- <div *ngIf="petImage" class="mt-4 flex justify-center"> -->
+        <div class="mt-4 flex justify-center">
+          <!-- <img [src]="petImage" alt="Vista previa de la mascota" class="w-48 h-48 object-cover rounded-full border border-gray-300"> -->
+          <img *ngIf="!fileUrl" alt="Vista previa de la mascota"
+            class="w-48 h-48 object-cover rounded-full border border-gray-300 text-center pt-16 ">
+          <img *ngIf="fileUrl" [src]="fileUrl"
+            class="w-48 h-48 object-cover rounded-full border border-gray-300 text-center ">
+        </div>
+      </div>
+
+      <!-- <div>
+        <label for="imagen" class="block text-sm font-medium text-gray-700">Imagen</label>
+        <input id="imagen" type="file" (change)="onFileChange($event)"
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        <div *ngIf="mascotaForm.get('imagen')?.invalid && mascotaForm.get('imagen')?.touched"
+          class="text-red-500 text-sm mt-1">
+          La imagen es obligatoria.
+        </div>
+      </div> -->
+
+      <!-- Información Básica -->
+      <div class="mb-6">
+        <label for="mombre" class="block text-gray-600 font-medium mb-2">Nombre de la Mascota</label>
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre de la mascota"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+        <div *ngIf="mascotaForm.get('nombre')?.invalid && mascotaForm.get('nombre')?.touched"
+          class="text-red-500 text-sm mt-1">
+          El nombre es obligatorio y debe tenr almenos 2 caracteres
+        </div>
+      </div>
+
+
+
+      <div class="mb-6">
+        <label for="edad" class="block text-gray-600 font-medium mb-2">Edad</label>
+        <input type="number" id="edad" formControlName="edad" placeholder="Edad en años"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <div *ngIf="mascotaForm.get('edad')?.invalid && mascotaForm.get('edad')?.touched"
+          class="text-red-500 text-sm mt-1">
+          La edad es obigatoria y debe ser un numero positivo
+        </div>
+      </div>
+
+
+
+      <div class="mb-6">
+        <label for="petSize" class="block text-gray-600 font-medium mb-2">Tipo de Mascota</label>
+        <select id="tipoMascotaId" formControlName="tipoMascotaId"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="">-- Selecciona un tipo de mascota --</option>
+          <option *ngFor="let tipo of tiposMascota" [value]="tipo.id">{{tipo.tipo}}</option>
+        </select>
+
+        <div *ngIf="mascotaForm.get('tipoMascotaId')?.invalid && mascotaForm.get('tipoMascotaId')?.touched"
+          class="text-red-500 text-sm mt-1">
+          Seleccione un tipo de mascota
+
+        </div>
+      </div>
+
+
+
+
+      <div class="mb-6">
+        <label for="petDescription" class="block text-gray-600 font-medium mb-2">Descripción</label>
+        <textarea id="petDescription" rows="4" placeholder="Breve descripción de la mascota"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+      </div>
+
+      <!-- Sección de Adoptado -->
+      <div class="mb-6">
+        <p class="text-lg font-semibold text-red-500">Esta mascota no está adoptada</p>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="flex justify-between">
+        <!-- <button type="button" (click)="onCancel()" class="px-6 py-3 bg-gray-400 text-white rounded-lg hover:bg-gray-500"> -->
+        <button type="button" class="px-6 py-3 bg-gray-400 text-white rounded-lg hover:bg-gray-500"
+          (click)="onCancel()">
+          Cancelar
+        </button>
+        <button type="submit" class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+          {{isEditMode ? 'Actualizar' : 'Guardar'}}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

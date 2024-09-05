@@ -1,0 +1,44 @@
+<!-- agregar-tipo-mascotas.component.html -->
+<div class="container">
+  <div class="form-wrapper">
+    <h2 class="text-3xl font-extrabold text-gray-900 mb-6 text-center">{{isEditMode ? 'Actualizar Tipo de Mascota' :
+      'Agregar Tipo de Mascota'}}</h2>
+    <form [formGroup]="tipoMascotaFormData" (ngSubmit)="onSubmit()" class="form-content">
+      <div class="form-group">
+        <label for="tipo" class="label-text">Tipo</label>
+        <input id="tipo" formControlName="tipo" type="text" class="form-input"
+          placeholder="Ingrese el tipo de mascota" />
+        <div *ngIf="tipoMascotaFormData.get('tipo')?.invalid && tipoMascotaFormData.get('tipo')?.touched"
+          class="error-message">
+          <div *ngIf="tipoMascotaFormData.get('tipo')?.errors?.['required']">El tipo es obligatorio.</div>
+          <div *ngIf="tipoMascotaFormData.get('tipo')?.errors?.['minlength']">El tipo debe tener al menos 2 caracteres.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion" class="label-text">Descripción</label>
+        <textarea id="descripcion" formControlName="descripcion" class="form-input" rows="4"
+          placeholder="Ingrese la descripción de la mascota"></textarea>
+        <div *ngIf="tipoMascotaFormData.get('descripcion')?.invalid && tipoMascotaFormData.get('descripcion')?.touched"
+          class="error-message">
+          <div *ngIf="tipoMascotaFormData.get('descripcion')?.errors?.['required']">La descripción es obligatoria.</div>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button routerLink="/tipo-mascotas" type="button" class="btn-cancel">
+          Cancelar
+        </button>
+        <button type="submit" class="btn-submit" [disabled]="tipoMascotaFormData.invalid">
+          {{isEditMode ? 'Actualizar' : 'Guardar'}}
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="banner">
+    <img
+      src="https://previews.123rf.com/images/lightwise/lightwise1308/lightwise130800067/21492142-animales-dom%C3%A9sticos-reg%C3%ADstrate-pantalla-vertical-para-la-medicina-veterinaria-y-tienda-de-mascotas-o.jpg"
+      alt="Banner de Mascotas" class="banner-image" />
+  </div>
+</div>
