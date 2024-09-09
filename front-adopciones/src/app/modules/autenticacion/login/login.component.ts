@@ -47,8 +47,15 @@ export class LoginComponent {
         respose => {
           this.usuario = respose.nombres
           console.log("this.usuario", this.usuario);
-          this.toastr.success(this.usuario, " Bienvenido "),
-            this.router.navigate(['/home'])
+          if (respose.tipoUsuario == 'ADMIN') {
+            this.router.navigate(['/listar-usuarios']);
+            this.toastr.success(this.usuario, " Bienvenido ")
+            console.log("respose.tipoUsuario", respose.tipoUsuario);
+          } else {
+            this.router.navigate(['/home']);
+            this.toastr.success(this.usuario, " Bienvenido ")
+
+          }
 
         },
       error:

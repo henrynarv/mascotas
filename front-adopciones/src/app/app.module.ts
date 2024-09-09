@@ -35,6 +35,8 @@ import { SliderComponent } from './components/slider/slider/slider.component';
 
 
 import { register } from 'swiper/element/bundle';
+import { NavAdminComponent } from './components/navbar/nav-admin/nav-admin.component';
+import { NavContainerComponent } from './components/navbar/nav-container/nav-container.component';
 // register Swiper custom elements
 register();
 
@@ -61,6 +63,8 @@ register();
     ImagenUploadComponent,
     ListarImagenBannerComponent,
     SliderComponent,
+    NavAdminComponent,
+    NavContainerComponent,
 
 
 

@@ -6,7 +6,7 @@ export interface Mascota {
   nombre: string;
   edad: number;
   tipoMascota: TipoMascotaModel;
-  isAdoptado: boolean;
+  adoptado: boolean;
   imageUrl?: string;
 
 }

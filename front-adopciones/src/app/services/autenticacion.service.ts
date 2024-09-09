@@ -9,6 +9,7 @@ import { Usuario } from '../models/usuario.interface';
 export class AutenticacionService {
   public userSubject = new BehaviorSubject<Usuario | null>(null);
   user$ = this.userSubject.asObservable();
+  isUsuario!: boolean;
 
   private apiUrl = 'http://localhost:8080/api/usuarios';
 
@@ -33,6 +34,7 @@ export class AutenticacionService {
         console.log('User received from server:', user.nombres); // Añade un log para verificar el valor
         sessionStorage.setItem('user', JSON.stringify(user));
         sessionStorage.setItem('authType', 'normal');
+
         this.userSubject.next(user);// Actualiza el estado del usuario
         console.log("this.userSubject.next(user)", this.userSubject.next(user));
       }),
@@ -55,6 +57,8 @@ export class AutenticacionService {
     )
 
   }
+
+
 
   updateUsuario(formData: FormData): Observable<Usuario> {
     const userId = this.userSubject.value?.id;

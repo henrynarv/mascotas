@@ -20,6 +20,7 @@ export class ListarMascotasComponent {
 
   ngOnInit(): void {
     this.listarMascotas();
+
   }
 
   listarMascotas() {
@@ -28,6 +29,7 @@ export class ListarMascotasComponent {
       next:
         (mascotas: Mascota[]) => {
           this.mascotas = mascotas;
+          console.log("mascotas", this.mascotas);
 
           if (this.mascotas.length > 0) {
             this.selectMascota(this.mascotas[0])

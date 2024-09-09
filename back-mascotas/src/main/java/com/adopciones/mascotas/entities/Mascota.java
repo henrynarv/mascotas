@@ -22,7 +22,7 @@ public class Mascota {
     @JsonManagedReference
     private TipoMascota tipoMascota;
 
-    private boolean adoptado = false;
+    private boolean adoptado = true;
 
     private String imageUrl;
 

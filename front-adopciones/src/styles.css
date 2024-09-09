@@ -41,3 +41,6 @@ ngx-spinner {
 
 /* Importa los estilos de Swiper */
 @import "node_modules/swiper/swiper-bundle.min.css";
+
+
+@import 'flowbite';
